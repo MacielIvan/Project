@@ -105,6 +105,9 @@ body * {
     z-index: 1;
     transform: translateY(-50%);
 
+    animation: slide-back 0.2s;
+
+
     /*Estratégia para alinhar elemento em posição absoluta, no caso, alinhando o topo, no caso o translatey,
     retirando 50% e pondo 50% utilizando a propriedade top. Alinhamento realizado na vertical.
     Se fosse pra realizar o alinhamento na horizontal seria retirado 50% do eixo X e adicionado 50%
@@ -112,11 +115,14 @@ body * {
 }
 
 .light #switch button {
-    right: 0;
-    left: initial;
+    animation: slide-in 0.2s forwards;
 
     /*Realizando a troca de lugar do button, quando está no dark mode ou light mode.
     Apenas para trocar o posicionamento do botão switch*/
+}
+
+#switch button:hover {
+    outline: 8px solid var(--highlight-color)
 }
 
 #switch span {
@@ -216,4 +222,22 @@ footer {
         --bg-url: url(./assets/bg-desktop-light.jpg);
     }
 
+}
+/* Animation*/
+@keyframes slide-in{
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+    to {
+        left: 0;
+    }
 }
