@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* Retirando a margin e o padding que já são "automaticos", na verdade algumas configurações são "postas
+    pelo próprio navegador" utilizado */
+    /* box-sizing é a medida do tamanho da caixa pra que seja medida através da borda */
+}
+
+:root {
+    --text-color: white;
+    --bg-url: url(./assets/bg-mobile.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg-url: url(./assets/moon-stars.svg);
+    
+
+    /*Todo lugar em que essa variavel for utilizada, segura a espeficiação acima
+    ou seja, texto na cor branca*/
+}
+
+.light {
+    --text-color: black;
+    --bg-url: url(./assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0,0,0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+    --switch-bg-url: url(./assets/sun.svg);
+
+    /*Alterando o tema e trocando a fonte quando for light mode */
+}
+
+body {
+    background: var(--bg-url) no-repeat top center/cover;
+    
+    /*background: color image repeat position/size
+    background: url(./assets/bg-mobile.jpg) no-repeat top center/ cover;
+    /*Seria apenas um "atalho de todas as informações que colocamos no background
+     linha por linha, propriedade chamada de short hand ou atalho */
+}
+
+body * {
+    font-family: "Inter", sans-serif;
+    color: var(--text-color);
+
+    /* asterisco é o seletor universal */
+}
+
+#container01 {
+    width: 360px;
+    margin: 56px auto 0px;
+    padding: 0 24px;
+
+    /* Informações da "caixa central" do perfil */
+}
+
+/*Profile*/
+
+#profile {
+    text-align: center;
+    padding: 24px;
+
+    /*Utilizado também para alinhar no centro*/
+}
+
+#profile img {
+    width: 112px;
+    
+    /*Informações da imagem do perfil */
+    /*Imagem é um elemento inline, em elementos inline não é possivel utilizar o margin: auto; */
+    /* display: block; basicamente força o elemento virar block, podendo ser utilizado o margin: auto;*/
+}
+
+#profile p {
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+/*Switch*/
+
+#switch {
+    position: relative;
+    width: 64px;
+
+    margin: 4px auto;
+}
+
+#switch button {
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+    
+    position:absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    transform: translateY(-50%);
+
+    /*Estratégia para alinhar elemento em posição absoluta, no caso, alinhando o topo, no caso o translatey,
+    retirando 50% e pondo 50% utilizando a propriedade top. Alinhamento realizado na vertical.
+    Se fosse pra realizar o alinhamento na horizontal seria retirado 50% do eixo X e adicionado 50%
+    com a propriedade left ou right*/
+}
+
+.light #switch button {
+    right: 0;
+    left: initial;
+
+    /*Realizando a troca de lugar do button, quando está no dark mode ou light mode.
+    Apenas para trocar o posicionamento do botão switch*/
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+/*Link*/
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+
+    /* Importante
+    flex-direction: column fez com que a lista fosse organizada em forma de coluna
+    gap faz com que haja um espaçamento, uma divisão entre os elementos*/
+}
+
+ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px 24px;
+
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    text-decoration: none; 
+    font-weight: 500;
+
+    transition: background 0.3s;
+
+    /*Importante align-items e justify-content, em minhas palavras eu entendi como se fosse
+    o eixo X e Y ou seja, a combinação dos 2 resulta em uma centralização mais correta se assim posso dizer.
+    Ocorre melhor alinhamento e centralização dos elementos */
+    
+}
+
+/* pseud-selector*/
+ul li a:hover {
+    background: var(--surface-color-hover);
+    border: 1.5px solid var(--text-color);
+
+    /*hover é um pseud seletor, no caso ele da uma marcação onde o mouse ta, da uma diferenciada*/
+}
+
+/*Social links*/
+#social-links {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0px;
+    font-size: 24px;
+    
+}
+
+#social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+
+    transition: background 0.2s;
+    border-radius: 50%;
+}
+
+#social-links a:hover {
+    background: var(--highlight-color);  
+}
+
+footer {
+    padding: 24px 0;
+    text-align: center;
+    font-size: 14px;
+}
